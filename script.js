@@ -65,7 +65,7 @@ function toggleEffect(id) {
 
         parentNode.classList.add('hidden');
         filterSection.classList.remove('hidden');
-        
+
     }
     else if (id == 'all-filter-btn') {
         countDisplay.innerHTML = `${totalJobsCount} Jobs`
@@ -78,13 +78,98 @@ function toggleEffect(id) {
 
         parentNode.classList.add('hidden');
         filterSection.classList.remove('hidden');
-        
+
     };
 
 };
 
 
+// Event Delegation to Parent/Main :
+const main = document.querySelector('main');
 
+main.addEventListener('click', function (event) {
+    // console.log(event.target)
+    if (event.target.classList.contains('interview-btn')) {
+        // console.log("Clicked Interview")
+
+        const parentNode = event.target.parentNode.parentNode;
+        const companyName = parentNode.querySelector('.company-name').innerText;
+        const jobTitle = parentNode.querySelector('.job-title').innerText;
+        const jobSalary = parentNode.querySelector('.job-salary').innerText;
+        const jobStatus = parentNode.querySelector('.jobStatus').innerText;
+        const jobNotes = parentNode.querySelector('.job-notes').innerText;
+
+        // Update Status
+        parentNode.querySelector('.jobStatus').innerText = 'INTERVIEW';
+        parentNode.querySelector('.jobStatus').style.color = '#33c36d';
+        parentNode.querySelector('.jobStatus').style.fontWeight = '700';
+        parentNode.querySelector('.jobStatus').style.border = '2px solid #15d361';
+        parentNode.querySelector('.jobStatus').style.backgroundColor = '#ddffcf'
+
+        const cardInfo = {
+            companyName,
+            jobTitle,
+            jobSalary,
+            jobStatus: 'INTERVIEW',
+            jobNotes
+        }
+        // No Duplicate
+        const isExist = interviewList.find(item => item.companyName == cardInfo.companyName);
+
+        if (!isExist) {
+            interviewList.push(cardInfo);
+        }
+
+        // Remove items from list
+        rejectedList = rejectedList.filter(item => item.companyName != cardInfo.companyName);
+
+        // After remove render html
+        if (currentStatus == 'rejected-filter-btn') {
+            renderRejected()
+        }
+        countCalculation()
+
+    }
+    else if (event.target.classList.contains('rejected-btn')) {
+
+        const parentNode = event.target.parentNode.parentNode;
+        const companyName = parentNode.querySelector('.company-name').innerText;
+        const jobTitle = parentNode.querySelector('.job-title').innerText;
+        const jobSalary = parentNode.querySelector('.job-salary').innerText;
+        const jobStatus = parentNode.querySelector('.jobStatus').innerText;
+        const jobNotes = parentNode.querySelector('.job-notes').innerText;
+
+        // Update Status
+        parentNode.querySelector('.jobStatus').innerText = 'REJECTED';
+        parentNode.querySelector('.jobStatus').style.color = 'red';
+        parentNode.querySelector('.jobStatus').style.fontWeight = '700';
+        parentNode.querySelector('.jobStatus').style.border = '2px solid red';
+        parentNode.querySelector('.jobStatus').style.backgroundColor = '#eadada'
+
+
+        const cardInfo = {
+            companyName,
+            jobTitle,
+            jobSalary,
+            jobStatus: 'REJECTED',
+            jobNotes
+        }
+        // No Duplicate
+        const isExist = rejectedList.find(item => item.companyName == cardInfo.companyName);
+
+        if (!isExist) {
+            rejectedList.push(cardInfo);
+        }
+
+        interviewList = interviewList.filter(item => item.companyName != cardInfo.companyName);
+        if (currentStatus == 'interview-filter-btn') {
+            renderInterview()
+        }
+        countCalculation()
+
+    }
+
+});
 
 
 
