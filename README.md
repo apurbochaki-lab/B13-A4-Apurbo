@@ -17,12 +17,9 @@ Question 1 : What is the difference between getElementById, getElementsByClassNa
 
 Question 2 : How do you create and insert a new element into the DOM?
 
-নতুন element make করতে আমরা document.createElement() use করি। তারপর সেটার মধ্যে innerText or innerHtml সেট করে append করে দেই। নিচে আমি একটা উদাহরণসরুপ দেখাচ্ছি ঃ
+নতুন element make করতে আমরা document.createElement() use করি। তারপর সেটার মধ্যে innerText or innerHtml সেট করে append করে দেই। নিচে আমি একটা উদাহরণসরুপ :
 
-<section id="parent">
-
-</section>
-
+<section id="parent"> </section>
 let parent = document.getElementById('parent')
 
 let p = document.createElement('p')
