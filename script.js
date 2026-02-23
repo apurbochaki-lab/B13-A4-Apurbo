@@ -258,3 +258,31 @@ function renderRejected() {
         filterSection.appendChild(div);
     }
 }
+
+
+
+// Delete Cards Logic
+const deleteBtns = document.getElementsByClassName('delete-btn');
+const modal = document.getElementById('modal');
+const confirmDelete = document.getElementById('confirmDelete');
+let selectedCard = ''
+
+for (btn of deleteBtns) {
+    btn.addEventListener('click', function (event) {
+        // console.log(event.target.parentNode.parentNode.parentNode)
+        selectedCard = event.target.parentNode.parentNode.parentNode;
+        modal.showModal();
+    })
+};
+// Logic for modal delete btn
+confirmDelete.addEventListener('click', function () {
+    selectedCard.remove();
+    countCalculation();
+    modal.close()
+});
+
+
+
+
+
+
