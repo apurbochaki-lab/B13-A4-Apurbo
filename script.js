@@ -19,3 +19,37 @@ function countCalculation() {
     rejectedCount.innerText = rejectedList.length;
 }
 countCalculation()
+
+
+// 3 Button Toggle Effect
+const allFilterBtn = document.getElementById('all-filter-btn');
+const interviewFilterBtn = document.getElementById('interview-filter-btn');
+const rejectedFilterBtn = document.getElementById('rejected-filter-btn');
+
+const whenNoData = document.getElementById('when-no-data');
+
+function toggleEffect(id) {
+    // console.log("Click -->", id);
+    currentStatus = id;
+    // Tab Buttons color toggle
+    allFilterBtn.style.backgroundColor = 'white';
+    interviewFilterBtn.style.backgroundColor = 'white';
+    rejectedFilterBtn.style.backgroundColor = 'white';
+    allFilterBtn.style.color = 'black';
+    interviewFilterBtn.style.color = 'black';
+    rejectedFilterBtn.style.color = 'black';
+
+    const selected = document.getElementById(id);
+    selected.style.backgroundColor = '#50a2ff';
+    selected.style.color = 'white';
+
+    
+
+};
+
+
+
+
+
+
+
