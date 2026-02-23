@@ -43,7 +43,15 @@ function toggleEffect(id) {
     selected.style.backgroundColor = '#50a2ff';
     selected.style.color = 'white';
 
-    
+    // No Data to show logic :
+    if (id == 'interview-filter-btn' && interviewList.length == 0) {
+        whenNoData.classList.remove('hidden');
+    }
+    else if (id == 'rejected-filter-btn' && rejectedList.length == 0) {
+        whenNoData.classList.remove('hidden');
+    } else {
+        whenNoData.classList.add('hidden')
+    };
 
 };
 
