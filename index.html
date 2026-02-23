@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+
+    <!-- DaisyUI + TailWind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8FAFC]">
+    <header class="w-[80%] mx-auto">
+        <h1 class="text-[#002C5C] text-[32px] font-bold my-2">Job Application Tracker</h1>
+
+        <div class="grid grid-cols-3 gap-4 border-b-2 border-b-gray-200 py-6">
+            <div class="bg-white shadow-md p-5 rounded-md">
+                <p class="font-medium">Total</p>
+                <p id="totalCount" class="font-bold text-[24px]">0</p>
+            </div>
+            <div class="bg-white shadow-md p-5 rounded-md">
+                <p class="font-medium">Interview</p>
+                <p id="interviewCount" class="font-bold text-[24px] text-[#10B981]">0</p>
+            </div>
+            <div class="bg-white shadow-md p-5 rounded-md">
+                <p class="font-medium">Rejected</p>
+                <p id="rejectedCount" class="font-bold text-[24px] text-[#EF4444]">0</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="w-[80%] mx-auto mt-7 mb-10">
+        <section class="flex justify-between">
+            <p class="font-semibold text-[20px] text-[#002C5C]">Available Jobs</p>
+            <p id="count-display" class="text-[#323B49]/70 font-medium"><span id="jobsCount">0</span> Jobs</p>
+        </section>
+
+        <section class="tab-btn-section mt-7 flex gap-3.5 mb-5">
+            <button onclick="toggleEffect('all-filter-btn')" id="all-filter-btn"
+                class="shadow rounded-md px-5 py-2 font-semibold cursor-pointer bg-blue-400 text-white">All</button>
+            <button onclick="toggleEffect('interview-filter-btn')" id="interview-filter-btn"
+                class="shadow rounded-md px-5 py-2 font-semibold cursor-pointer bg-white">Interview</button>
+            <button onclick="toggleEffect('rejected-filter-btn')" id="rejected-filter-btn"
+                class="shadow rounded-md px-5 py-2 font-semibold cursor-pointer bg-white">Rejected</button>
+        </section>
+    </main>
+</body>
+
+</html>
