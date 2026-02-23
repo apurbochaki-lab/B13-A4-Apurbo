@@ -65,7 +65,7 @@ function toggleEffect(id) {
 
         parentNode.classList.add('hidden');
         filterSection.classList.remove('hidden');
-
+        renderInterview()
     }
     else if (id == 'all-filter-btn') {
         countDisplay.innerHTML = `${totalJobsCount} Jobs`
@@ -78,7 +78,7 @@ function toggleEffect(id) {
 
         parentNode.classList.add('hidden');
         filterSection.classList.remove('hidden');
-
+        renderRejected()
     };
 
 };
@@ -173,4 +173,88 @@ main.addEventListener('click', function (event) {
 
 
 
+function renderInterview() {
+    filterSection.innerHTML = '';
 
+    for (let interview of interviewList) {
+        // console.log("render Info:", interview);
+
+        let div = document.createElement('div');
+        div.className = 'main-card flex justify-between p-6 rounded-md bg-white shadow-md';
+        div.innerHTML = `
+        <div class="card-left space-y-5">
+                    <div>
+                        <h2 class="company-name text-[#002C5C] text-[18px] font-semibold">${interview.companyName}</h2>
+                        <p class="job-title text-[#64748B]">${interview.jobTitle}</p>
+                    </div>
+
+                    <div>
+                        <p class="job-salary text-[#64748B]">${interview.jobSalary}</p>
+                    </div>
+
+                    <div>
+                        <p
+                            class="jobStatus text-[#33c36d] font-bold border-2 border-[#15d361] bg-[#ddffcf] px-[12px] py-[8px] w-[130px] text-center rounded-md">${interview.jobStatus}</p>
+                    </div>
+
+                    <div>
+                        <p class="job-notes">${interview.jobNotes}</p>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="rejected-btn btn btn-outline btn-error">REJECTED</button>
+                    </div>
+                </div>
+
+                <div
+                    class="card-right bg-white w-[40px] h-[40px] p-4 rounded-full shadow flex justify-center items-center">
+                    <button id="delete-btn" class="cursor-pointer"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+        `;
+        filterSection.appendChild(div);
+    }
+}
+
+function renderRejected() {
+    filterSection.innerHTML = '';
+
+    for (let rejected of rejectedList) {
+        // console.log("render Info:", rejected);
+
+        let div = document.createElement('div');
+        div.className = 'main-card flex justify-between p-6 rounded-md bg-white shadow-md';
+        div.innerHTML = `
+        <div class="card-left space-y-5">
+                    <div>
+                        <h2 class="company-name text-[#002C5C] text-[18px] font-semibold">${rejected.companyName}</h2>
+                        <p class="job-title text-[#64748B]">${rejected.jobTitle}</p>
+                    </div>
+
+                    <div>
+                        <p class="job-salary text-[#64748B]">${rejected.jobSalary}</p>
+                    </div>
+
+                    <div>
+                        <p
+                            class="jobStatus text-red-500 font-bold border-2 border-red-500 bg-[#eadada] px-[12px] py-[8px] w-[130px] text-center rounded-md">${rejected.jobStatus}</p>
+                    </div>
+
+                    <div>
+                        <p class="job-notes">${rejected.jobNotes}</p>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="rejected-btn btn btn-outline btn-error">REJECTED</button>
+                    </div>
+                </div>
+
+                <div
+                    class="card-right bg-white w-[40px] h-[40px] p-4 rounded-full shadow flex justify-center items-center">
+                    <button id="delete-btn" class="cursor-pointer"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+        `;
+        filterSection.appendChild(div);
+    }
+}
