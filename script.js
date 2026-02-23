@@ -53,6 +53,34 @@ function toggleEffect(id) {
         whenNoData.classList.add('hidden')
     };
 
+    // Available jobs count
+    const interviewCount = interviewList.length;
+    const rejectedCount = rejectedList.length;
+    const totalJobsCount = parentNode.children.length;
+    const countDisplay = document.getElementById('count-display');
+
+    // Tab Buttons mechanism
+    if (id == 'interview-filter-btn') {
+        countDisplay.innerHTML = `${interviewCount} of ${totalJobsCount} Jobs`
+
+        parentNode.classList.add('hidden');
+        filterSection.classList.remove('hidden');
+        
+    }
+    else if (id == 'all-filter-btn') {
+        countDisplay.innerHTML = `${totalJobsCount} Jobs`
+
+        parentNode.classList.remove('hidden');
+        filterSection.classList.add('hidden');
+    }
+    else if (id == 'rejected-filter-btn') {
+        countDisplay.innerHTML = `${rejectedCount} of ${totalJobsCount} Jobs`
+
+        parentNode.classList.add('hidden');
+        filterSection.classList.remove('hidden');
+        
+    };
+
 };
 
 
